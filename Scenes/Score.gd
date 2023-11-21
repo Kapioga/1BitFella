@@ -11,7 +11,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	score_detect_l.motion_offset.x -= 200 *delta
+	score_detect_l.motion_offset.x -= 400 *delta
 
 
 func _on_score_detect_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):

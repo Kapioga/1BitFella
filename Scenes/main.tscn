@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3111ednfndj2"]
+[gd_scene load_steps=13 format=3 uid="uid://b3111ednfndj2"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_3se6e"]
 [ext_resource type="PackedScene" uid="uid://gmu2jvgsq3ub" path="res://Scenes/background.tscn" id="1_cx71f"]
@@ -7,6 +7,33 @@
 [ext_resource type="PackedScene" uid="uid://st882t5dcm7b" path="res://Scenes/wall_spike.tscn" id="3_wj2xy"]
 [ext_resource type="FontFile" uid="uid://cydnd2rfvdub0" path="res://Assets/Minecraft.ttf" id="5_vpi53"]
 [ext_resource type="Script" path="res://Scenes/Score.gd" id="6_40v6d"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mviec"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5qdta"]
+lifetime_randomness = 0.44
+emission_shape = 3
+emission_box_extents = Vector3(7, 7, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 45.28
+gravity = Vector3(0, 50, 0)
+initial_velocity_min = 12.35
+initial_velocity_max = 80.25
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 10.0
+damping_max = 10.0
+scale_min = 3.0
+scale_max = 3.0
+color = Color(0.694118, 1, 1, 1)
+anim_speed_min = 5.0
+anim_speed_max = 5.0
+collision_mode = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_jnxe2"]
 font = ExtResource("5_vpi53")
@@ -22,15 +49,6 @@ size = Vector2(13, 571)
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3se6e")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-offset_left = -14.0
-offset_top = -7.0
-offset_right = 1016.0
-offset_bottom = 566.0
-color = Color(0, 0, 0, 1)
-metadata/_edit_lock_ = true
-
 [node name="Background" parent="." instance=ExtResource("1_cx71f")]
 
 [node name="Wall Spike" parent="." instance=ExtResource("3_wj2xy")]
@@ -44,6 +62,13 @@ collision_mask = 2
 
 [node name="Player" parent="." instance=ExtResource("3_c7kxt")]
 position = Vector2(132, 444)
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Player"]
+visible = false
+material = SubResource("CanvasItemMaterial_mviec")
+position = Vector2(-13, 7)
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_5qdta")
 
 [node name="ScoreLabel" type="Label" parent="."]
 anchors_preset = 1
