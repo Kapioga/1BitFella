@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://bmhubkigvktql"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_0ra6m"]
+[ext_resource type="Texture2D" uid="uid://dxsecy51fgvp7" path="res://Assets/monochrome_tilemap_transparent.png" id="2_pjo12"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bia2q"]
+atlas = ExtResource("2_pjo12")
+region = Rect2(17, 204, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pbut"]
+atlas = ExtResource("2_pjo12")
+region = Rect2(34, 204, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34xux"]
+atlas = ExtResource("2_pjo12")
+region = Rect2(51, 204, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5bc8"]
+atlas = ExtResource("2_pjo12")
+region = Rect2(68, 204, 17, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dek6l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bia2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pbut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34xux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5bc8")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rc584"]
+size = Vector2(6.4, 6)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_0ra6m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dek6l")
+animation = &"run"
+autoplay = "run"
+frame_progress = 0.887415
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-4.76837e-07, 1)
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_rc584")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(-2.38419e-07, 0.5)
+scale = Vector2(2.5, 2.5)
+shape = SubResource("RectangleShape2D_rc584")

@@ -1,0 +1,100 @@
+[gd_scene load_steps=11 format=3 uid="uid://b3111ednfndj2"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_3se6e"]
+[ext_resource type="PackedScene" uid="uid://gmu2jvgsq3ub" path="res://Scenes/background.tscn" id="1_cx71f"]
+[ext_resource type="PackedScene" uid="uid://ckx1aa077su38" path="res://Scenes/floor_mod.tscn" id="2_or350"]
+[ext_resource type="PackedScene" uid="uid://bmhubkigvktql" path="res://Scenes/player.tscn" id="3_c7kxt"]
+[ext_resource type="PackedScene" uid="uid://st882t5dcm7b" path="res://Scenes/wall_spike.tscn" id="3_wj2xy"]
+[ext_resource type="FontFile" uid="uid://cydnd2rfvdub0" path="res://Assets/Minecraft.ttf" id="5_vpi53"]
+[ext_resource type="Script" path="res://Scenes/Score.gd" id="6_40v6d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jnxe2"]
+font = ExtResource("5_vpi53")
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_35ukt"]
+font = ExtResource("5_vpi53")
+font_size = 20
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6xq1"]
+size = Vector2(13, 571)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_3se6e")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -14.0
+offset_top = -7.0
+offset_right = 1016.0
+offset_bottom = 566.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Background" parent="." instance=ExtResource("1_cx71f")]
+
+[node name="Wall Spike" parent="." instance=ExtResource("3_wj2xy")]
+position = Vector2(-25, 2)
+
+[node name="Area2D" parent="Wall Spike" index="2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="FloorMod" parent="." instance=ExtResource("2_or350")]
+
+[node name="Player" parent="." instance=ExtResource("3_c7kxt")]
+position = Vector2(132, 444)
+
+[node name="Trails" type="CPUParticles2D" parent="Player"]
+visible = false
+amount = 80
+emission_shape = 2
+emission_sphere_radius = 1.0
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 865.0
+offset_top = 22.0
+offset_right = 942.0
+offset_bottom = 48.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+text = "SCORE :"
+label_settings = SubResource("LabelSettings_jnxe2")
+
+[node name="ScoreNum" type="Label" parent="ScoreLabel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 36.0
+offset_top = -14.0
+offset_right = 76.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_35ukt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="ParallaxBackground" parent="."]
+script = ExtResource("6_40v6d")
+
+[node name="ScoreDetectL" type="ParallaxLayer" parent="Score"]
+motion_mirroring = Vector2(1000, 0)
+
+[node name="ScoreDetect" type="Area2D" parent="Score/ScoreDetectL"]
+position = Vector2(11, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Score/ScoreDetectL/ScoreDetect"]
+position = Vector2(997.5, 276)
+shape = SubResource("RectangleShape2D_k6xq1")
+
+[connection signal="area_shape_entered" from="Score/ScoreDetectL/ScoreDetect" to="Score" method="_on_score_detect_area_shape_entered"]
+
+[editable path="Wall Spike"]
