@@ -1,19 +1,19 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+const SPEED = 400.0
 const JUMP_VELOCITY = -400.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-@onready var trails = $Trails
+@onready var animated_sprite_2d = $AnimatedSprite2D
 
 
 func _physics_process(delta):
 	gravity_set(delta)
 	jump_set()
-	player_move()
-
+	player_move(delta)
+	anim_dir()
 	move_and_slide()
 
 # Gravity Settings
@@ -27,22 +27,16 @@ func jump_set():
 		velocity.y = JUMP_VELOCITY
 
 # Player Movement 
-func player_move():
+func player_move(delta):
 	var direction = Input.get_axis("Left", "Right")
 	if direction:
 		velocity.x = direction * SPEED
-		trails.emitting = true
-		
-	elif velocity.x < -1:
-		trails.direction.x = -1
-		
-	elif velocity.x > 1:
-		trails.direction.x = 1
-		
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		trails.emitting = false
 
-#Detects Spike
-func _on_area_2d_body_entered(body):
-	print("Spike Touched!")
+#Player Sprite directions
+func anim_dir():
+	if velocity.x > 1:
+		animated_sprite_2d.flip_h = false
+	if velocity.x < -1:
+		animated_sprite_2d.flip_h = true

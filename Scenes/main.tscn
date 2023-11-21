@@ -45,12 +45,6 @@ collision_mask = 2
 [node name="Player" parent="." instance=ExtResource("3_c7kxt")]
 position = Vector2(132, 444)
 
-[node name="Trails" type="CPUParticles2D" parent="Player"]
-visible = false
-amount = 80
-emission_shape = 2
-emission_sphere_radius = 1.0
-
 [node name="ScoreLabel" type="Label" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
@@ -94,6 +88,7 @@ position = Vector2(11, 12)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Score/ScoreDetectL/ScoreDetect"]
 position = Vector2(997.5, 276)
 shape = SubResource("RectangleShape2D_k6xq1")
+debug_color = Color(0.803922, 0.333333, 0.65098, 0.419608)
 
 [connection signal="area_shape_entered" from="Score/ScoreDetectL/ScoreDetect" to="Score" method="_on_score_detect_area_shape_entered"]
 
