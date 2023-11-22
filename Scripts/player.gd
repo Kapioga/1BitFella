@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 #Health variables
 @onready var h_bar = $"../HealthBar/HBar"
-var player_health = 100
+var player_health 
 
 # Movement variables
 const SPEED = 400.0
@@ -48,7 +48,7 @@ func anim_dir():
 	if velocity.x < -1:
 		animated_sprite_2d.flip_h = true
 
-
+#Spike Wall detect and damage
 func entered_spike_wall(area):
 	player_health = h_bar.value
 	print("Oof, you touched the wall!")
