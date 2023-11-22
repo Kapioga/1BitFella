@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 #Health variables
 @onready var h_bar = $"../HealthBar/HBar"
-var player_health = h_bar.value
+var player_health = 100
 
 # Movement variables
 const SPEED = 400.0
@@ -50,7 +50,9 @@ func anim_dir():
 
 
 func entered_spike_wall(area):
+	player_health = h_bar.value
 	print("Oof, you touched the wall!")
-	player_health -= 1
+	player_health -= 5
+	h_bar.value = player_health
 	print("Players health is: ", str(player_health))
 
