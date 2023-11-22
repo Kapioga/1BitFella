@@ -1,10 +1,14 @@
 extends CharacterBody2D
 
+#Health variables
+@onready var h_bar = $"../HealthBar/HBar"
+var player_health = h_bar.value
 
+# Movement variables
 const SPEED = 400.0
 const JUMP_VELOCITY = -400.0
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
+# Gravity variables
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var gpu_particles_2d = $GPUParticles2D
@@ -43,3 +47,10 @@ func anim_dir():
 		animated_sprite_2d.flip_h = false
 	if velocity.x < -1:
 		animated_sprite_2d.flip_h = true
+
+
+func entered_spike_wall(area):
+	print("Oof, you touched the wall!")
+	player_health -= 1
+	print("Players health is: ", str(player_health))
+

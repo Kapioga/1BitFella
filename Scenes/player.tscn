@@ -70,7 +70,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rc584"]
-size = Vector2(6.4, 6)
+size = Vector2(7.6, 6.4)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_0ra6m")
@@ -98,7 +98,6 @@ shape = SubResource("RectangleShape2D_rc584")
 scale = Vector2(2, 2)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-visible = false
-position = Vector2(-2.38419e-07, 0.5)
+position = Vector2(-1.5, 1)
 scale = Vector2(2.5, 2.5)
 shape = SubResource("RectangleShape2D_rc584")

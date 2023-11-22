@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b3111ednfndj2"]
+[gd_scene load_steps=14 format=3 uid="uid://b3111ednfndj2"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_3se6e"]
 [ext_resource type="PackedScene" uid="uid://gmu2jvgsq3ub" path="res://Scenes/background.tscn" id="1_cx71f"]
@@ -7,33 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://st882t5dcm7b" path="res://Scenes/wall_spike.tscn" id="3_wj2xy"]
 [ext_resource type="FontFile" uid="uid://cydnd2rfvdub0" path="res://Assets/Minecraft.ttf" id="5_vpi53"]
 [ext_resource type="Script" path="res://Scenes/Score.gd" id="6_40v6d"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mviec"]
-particles_animation = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5qdta"]
-lifetime_randomness = 0.44
-emission_shape = 3
-emission_box_extents = Vector3(7, 7, 1)
-particle_flag_disable_z = true
-direction = Vector3(0, 1, 0)
-spread = 45.28
-gravity = Vector3(0, 50, 0)
-initial_velocity_min = 12.35
-initial_velocity_max = 80.25
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-damping_min = 10.0
-damping_max = 10.0
-scale_min = 3.0
-scale_max = 3.0
-color = Color(0.694118, 1, 1, 1)
-anim_speed_min = 5.0
-anim_speed_max = 5.0
-collision_mode = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_jnxe2"]
 font = ExtResource("5_vpi53")
@@ -45,6 +18,32 @@ font_size = 20
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k6xq1"]
 size = Vector2(13, 571)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmktt"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mibc1"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="LabelSettings" id="LabelSettings_p4ada"]
+font = ExtResource("5_vpi53")
+font_color = Color(0.854902, 0.854902, 0.854902, 1)
+shadow_size = 5
+shadow_color = Color(0.752941, 0.752941, 0.752941, 0)
+shadow_offset = Vector2(2, 1)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3se6e")
@@ -63,12 +62,9 @@ collision_mask = 2
 [node name="Player" parent="." instance=ExtResource("3_c7kxt")]
 position = Vector2(132, 444)
 
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="Player"]
-visible = false
-material = SubResource("CanvasItemMaterial_mviec")
-position = Vector2(-13, 7)
-amount = 32
-process_material = SubResource("ParticleProcessMaterial_5qdta")
+[node name="Area2D" parent="Player" index="3"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="ScoreLabel" type="Label" parent="."]
 anchors_preset = 1
@@ -115,6 +111,47 @@ position = Vector2(997.5, 276)
 shape = SubResource("RectangleShape2D_k6xq1")
 debug_color = Color(0.803922, 0.333333, 0.65098, 0.419608)
 
+[node name="HealthBar" type="CanvasLayer" parent="."]
+
+[node name="HBar" type="ProgressBar" parent="HealthBar"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -398.0
+offset_top = 25.0
+offset_right = -198.0
+offset_bottom = 55.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_vpi53")
+theme_override_styles/background = SubResource("StyleBoxFlat_fmktt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mibc1")
+value = 50.0
+rounded = true
+fill_mode = 1
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="HealthBar/HBar"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -23.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "HEALTH"
+label_settings = SubResource("LabelSettings_p4ada")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+uppercase = true
+
+[connection signal="area_entered" from="Wall Spike/Area2D" to="Player" method="entered_spike_wall"]
 [connection signal="area_shape_entered" from="Score/ScoreDetectL/ScoreDetect" to="Score" method="_on_score_detect_area_shape_entered"]
 
 [editable path="Wall Spike"]
+[editable path="Player"]

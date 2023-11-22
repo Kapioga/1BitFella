@@ -413,6 +413,8 @@ size = Vector2(36, 198.667)
 
 [node name="Wall Spike" type="StaticBody2D"]
 scale = Vector2(3, 3)
+collision_layer = 3
+collision_mask = 3
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(16, -107)
@@ -430,6 +432,5 @@ shape = SubResource("RectangleShape2D_htay5")
 position = Vector2(4, 88.6667)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2(4, 0)
 shape = SubResource("RectangleShape2D_htay5")
