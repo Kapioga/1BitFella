@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dku7wwl2t1n8f"
+path="res://.godot/imported/sfx_got_coin.wav-d1837219925a84e1768cd5a32502ffe5.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Player SFX/sfx_got_coin.wav"
+dest_files=["res://.godot/imported/sfx_got_coin.wav-d1837219925a84e1768cd5a32502ffe5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

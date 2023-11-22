@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bp525oif6q7a8"
+path="res://.godot/imported/sfx_movement_landing.wav-54bf928569a79c730df231c813c7dee9.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Player SFX/sfx_movement_landing.wav"
+dest_files=["res://.godot/imported/sfx_movement_landing.wav-54bf928569a79c730df231c813c7dee9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
