@@ -35,6 +35,7 @@ func jump_set():
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		jump_sfx.play()
+		gpu_particles_2d.emitting = true
 
 
 # Player Movement 

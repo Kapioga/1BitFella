@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b3111ednfndj2"]
+[gd_scene load_steps=17 format=3 uid="uid://b3111ednfndj2"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_3se6e"]
 [ext_resource type="PackedScene" uid="uid://gmu2jvgsq3ub" path="res://Scenes/background.tscn" id="1_cx71f"]
@@ -9,6 +9,23 @@
 [ext_resource type="Script" path="res://Scenes/Score.gd" id="6_40v6d"]
 [ext_resource type="PackedScene" uid="uid://dsjiamsnqdjlk" path="res://Scenes/lava.tscn" id="8_664yj"]
 [ext_resource type="PackedScene" uid="uid://d2sgn4luqgeoi" path="res://Scenes/platforms.tscn" id="9_u0plw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_446ph"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.266667, 0.266667, 0.266667, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0.133333, 0.133333, 0.133333, 1)
+shadow_size = 3
+shadow_offset = Vector2(2, 2)
+anti_aliasing_size = 0.835
 
 [sub_resource type="LabelSettings" id="LabelSettings_jnxe2"]
 font = ExtResource("5_vpi53")
@@ -50,6 +67,13 @@ shadow_offset = Vector2(2, 1)
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3se6e")
 
+[node name="ScorePanel" type="Panel" parent="."]
+offset_left = 786.0
+offset_top = 56.0
+offset_right = 928.0
+offset_bottom = 96.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_446ph")
+
 [node name="Background" parent="." instance=ExtResource("1_cx71f")]
 
 [node name="Wall Spike" parent="." instance=ExtResource("3_wj2xy")]
@@ -72,7 +96,7 @@ collision_mask = 2
 [node name="FloorMod" parent="." instance=ExtResource("2_or350")]
 
 [node name="Player" parent="." instance=ExtResource("3_c7kxt")]
-position = Vector2(132, 444)
+position = Vector2(444, 222)
 
 [node name="Area2D" parent="Player" index="3"]
 collision_layer = 3
@@ -82,10 +106,10 @@ collision_mask = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 845.0
-offset_top = 37.0
-offset_right = 922.0
-offset_bottom = 63.0
+offset_left = 794.0
+offset_top = 67.0
+offset_right = 871.0
+offset_bottom = 93.0
 grow_horizontal = 0
 size_flags_horizontal = 8
 text = "SCORE :"
@@ -124,6 +148,7 @@ shape = SubResource("RectangleShape2D_k6xq1")
 debug_color = Color(0.803922, 0.333333, 0.65098, 0.419608)
 
 [node name="HealthBar" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="HBar" type="ProgressBar" parent="HealthBar"]
 offset_left = 82.0
@@ -164,6 +189,10 @@ uppercase = true
 visible = false
 
 [node name="Platforms" parent="." instance=ExtResource("9_u0plw")]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(535, 262)
+max_distance = 100.0
 
 [connection signal="area_entered" from="Wall Spike/Area2D" to="Player" method="entered_spike_wall"]
 [connection signal="area_entered" from="Wall SpikeR/Area2D" to="Player" method="entered_spike_wall"]
