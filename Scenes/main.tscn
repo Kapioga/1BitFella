@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3111ednfndj2"]
+[gd_scene load_steps=16 format=3 uid="uid://b3111ednfndj2"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_3se6e"]
 [ext_resource type="PackedScene" uid="uid://gmu2jvgsq3ub" path="res://Scenes/background.tscn" id="1_cx71f"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://cydnd2rfvdub0" path="res://Assets/Minecraft.ttf" id="5_vpi53"]
 [ext_resource type="Script" path="res://Scenes/Score.gd" id="6_40v6d"]
 [ext_resource type="PackedScene" uid="uid://dsjiamsnqdjlk" path="res://Scenes/lava.tscn" id="8_664yj"]
+[ext_resource type="PackedScene" uid="uid://d2sgn4luqgeoi" path="res://Scenes/platforms.tscn" id="9_u0plw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jnxe2"]
 font = ExtResource("5_vpi53")
@@ -161,6 +162,8 @@ uppercase = true
 
 [node name="Lava" parent="." instance=ExtResource("8_664yj")]
 visible = false
+
+[node name="Platforms" parent="." instance=ExtResource("9_u0plw")]
 
 [connection signal="area_entered" from="Wall Spike/Area2D" to="Player" method="entered_spike_wall"]
 [connection signal="area_entered" from="Wall SpikeR/Area2D" to="Player" method="entered_spike_wall"]
