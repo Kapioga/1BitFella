@@ -1,0 +1,116 @@
+[gd_scene load_steps=8 format=3 uid="uid://dsjiamsnqdjlk"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oi1ny"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b7umq"]
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_box_extents = Vector3(100, 1, 1)
+particle_flag_align_y = true
+particle_flag_disable_z = true
+direction = Vector3(50, 0, 0)
+spread = 80.56
+flatness = 0.43
+gravity = Vector3(0, -500, 0)
+initial_velocity_max = 3.55
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 0.235
+damping_max = 22.005
+scale_min = 2.0
+scale_max = 5.0
+turbulence_noise_strength = 2.35
+anim_speed_max = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_em7gc"]
+size = Vector2(205.6, 102.2)
+
+[sub_resource type="Animation" id="Animation_yacts"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 577)]
+}
+
+[sub_resource type="Animation" id="Animation_q1mbk"]
+resource_name = "lava_rise_20"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 577), Vector2(0, 437), Vector2(0, 433)]
+}
+
+[sub_resource type="Animation" id="Animation_lv15v"]
+resource_name = "lava_rise_50_up"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 577), Vector2(0, 269), Vector2(0, 252)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4aeu5"]
+_data = {
+"RESET": SubResource("Animation_yacts"),
+"lava_rise_20_up": SubResource("Animation_q1mbk"),
+"lava_rise_50_up": SubResource("Animation_lv15v")
+}
+
+[node name="Lava" type="AnimatableBody2D"]
+position = Vector2(0, 577)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -12.0
+offset_right = 1013.0
+offset_bottom = 505.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect"]
+material = SubResource("CanvasItemMaterial_oi1ny")
+position = Vector2(514, 27)
+scale = Vector2(5.2, 5.2)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_b7umq")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Damage_Lava_Col" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(500, 250.5)
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_em7gc")
+
+[node name="LavaColl" type="CollisionShape2D" parent="."]
+position = Vector2(500, 250.5)
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_em7gc")
+
+[node name="LavaAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4aeu5")
+}

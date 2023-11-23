@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3111ednfndj2"]
+[gd_scene load_steps=14 format=3 uid="uid://b3111ednfndj2"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_3se6e"]
 [ext_resource type="PackedScene" uid="uid://gmu2jvgsq3ub" path="res://Scenes/background.tscn" id="1_cx71f"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://st882t5dcm7b" path="res://Scenes/wall_spike.tscn" id="3_wj2xy"]
 [ext_resource type="FontFile" uid="uid://cydnd2rfvdub0" path="res://Assets/Minecraft.ttf" id="5_vpi53"]
 [ext_resource type="Script" path="res://Scenes/Score.gd" id="6_40v6d"]
-[ext_resource type="PackedScene" uid="uid://dsjiamsnqdjlk" path="res://Scenes/lava.tscn" id="8_664yj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jnxe2"]
 font = ExtResource("5_vpi53")
@@ -52,19 +51,9 @@ script = ExtResource("1_3se6e")
 [node name="Background" parent="." instance=ExtResource("1_cx71f")]
 
 [node name="Wall Spike" parent="." instance=ExtResource("3_wj2xy")]
-position = Vector2(-35, 2)
-metadata/_edit_lock_ = true
+position = Vector2(-25, 2)
 
 [node name="Area2D" parent="Wall Spike" index="2"]
-collision_layer = 2
-collision_mask = 2
-
-[node name="Wall SpikeR" parent="." instance=ExtResource("3_wj2xy")]
-position = Vector2(1045, 540)
-rotation = 3.14159
-metadata/_edit_lock_ = true
-
-[node name="Area2D" parent="Wall SpikeR" index="2"]
 collision_layer = 2
 collision_mask = 2
 
@@ -81,10 +70,10 @@ collision_mask = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 845.0
-offset_top = 37.0
-offset_right = 922.0
-offset_bottom = 63.0
+offset_left = 865.0
+offset_top = 22.0
+offset_right = 942.0
+offset_bottom = 48.0
 grow_horizontal = 0
 size_flags_horizontal = 8
 text = "SCORE :"
@@ -125,11 +114,14 @@ debug_color = Color(0.803922, 0.333333, 0.65098, 0.419608)
 [node name="HealthBar" type="CanvasLayer" parent="."]
 
 [node name="HBar" type="ProgressBar" parent="HealthBar"]
-offset_left = 82.0
-offset_top = 30.0
-offset_right = 282.0
-offset_bottom = 60.0
-size_flags_horizontal = 4
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -398.0
+offset_top = 25.0
+offset_right = -198.0
+offset_bottom = 55.0
+grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_vpi53")
 theme_override_styles/background = SubResource("StyleBoxFlat_fmktt")
@@ -138,7 +130,6 @@ value = 50.0
 rounded = true
 fill_mode = 1
 show_percentage = false
-metadata/_edit_use_anchors_ = true
 
 [node name="HealthLabel" type="Label" parent="HealthBar/HBar"]
 layout_mode = 1
@@ -159,13 +150,8 @@ vertical_alignment = 1
 autowrap_mode = 1
 uppercase = true
 
-[node name="Lava" parent="." instance=ExtResource("8_664yj")]
-visible = false
-
 [connection signal="area_entered" from="Wall Spike/Area2D" to="Player" method="entered_spike_wall"]
-[connection signal="area_entered" from="Wall SpikeR/Area2D" to="Player" method="entered_spike_wall"]
 [connection signal="area_shape_entered" from="Score/ScoreDetectL/ScoreDetect" to="Score" method="_on_score_detect_area_shape_entered"]
 
 [editable path="Wall Spike"]
-[editable path="Wall SpikeR"]
 [editable path="Player"]

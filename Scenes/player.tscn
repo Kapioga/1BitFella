@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bmhubkigvktql"]
+[gd_scene load_steps=13 format=3 uid="uid://bmhubkigvktql"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_0ra6m"]
 [ext_resource type="Texture2D" uid="uid://dxsecy51fgvp7" path="res://Assets/monochrome_tilemap_transparent.png" id="2_pjo12"]
+[ext_resource type="AudioStream" uid="uid://bv6rjykninfk8" path="res://Assets/SFX/Player SFX/sfx_damage.wav" id="3_olyr0"]
+[ext_resource type="AudioStream" uid="uid://b3aifbnetvbyr" path="res://Assets/SFX/Player SFX/sfx_movement_jump.wav" id="4_n3dui"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ahn0y"]
 particles_animation = true
@@ -101,3 +103,9 @@ scale = Vector2(2, 2)
 position = Vector2(-1.5, 1)
 scale = Vector2(2.5, 2.5)
 shape = SubResource("RectangleShape2D_rc584")
+
+[node name="DamageSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_olyr0")
+
+[node name="JumpSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_n3dui")
