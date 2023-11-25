@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b3111ednfndj2"]
+[gd_scene load_steps=19 format=3 uid="uid://b3111ednfndj2"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_3se6e"]
 [ext_resource type="PackedScene" uid="uid://gmu2jvgsq3ub" path="res://Scenes/background.tscn" id="1_cx71f"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scenes/Score.gd" id="6_40v6d"]
 [ext_resource type="PackedScene" uid="uid://dsjiamsnqdjlk" path="res://Scenes/lava.tscn" id="8_664yj"]
 [ext_resource type="PackedScene" uid="uid://d2sgn4luqgeoi" path="res://Scenes/platforms.tscn" id="9_u0plw"]
+[ext_resource type="AudioStream" uid="uid://sqogwmdfoj6o" path="res://Assets/Old_School_back_music.mp3" id="10_x0eqy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_446ph"]
 bg_color = Color(0, 0, 0, 1)
@@ -205,6 +206,11 @@ offset_right = 627.0
 offset_bottom = 556.0
 text = "PRESS ESC KEY TO EXIT"
 label_settings = SubResource("LabelSettings_bffa2")
+
+[node name="GameTheme" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(424, 530)
+stream = ExtResource("10_x0eqy")
+volume_db = -10.0
 
 [connection signal="area_entered" from="Wall Spike/Area2D" to="Player" method="entered_spike_wall"]
 [connection signal="area_entered" from="Wall SpikeR/Area2D" to="Player" method="entered_spike_wall"]

@@ -1,0 +1,121 @@
+[gd_scene load_steps=9 format=3 uid="uid://cdkxwis7u8dhs"]
+
+[ext_resource type="FontFile" uid="uid://cydnd2rfvdub0" path="res://Assets/Minecraft.ttf" id="1_abb13"]
+[ext_resource type="Script" path="res://Scripts/credit_menu.gd" id="1_c4f4l"]
+[ext_resource type="Texture2D" uid="uid://biy67wnhyfcsv" path="res://Assets/monochrome_tilemap_packed.png" id="2_kfc2i"]
+[ext_resource type="AudioStream" uid="uid://sqogwmdfoj6o" path="res://Assets/Old_School_back_music.mp3" id="4_vnbuk"]
+
+[sub_resource type="Theme" id="Theme_ava2w"]
+default_font = ExtResource("1_abb13")
+default_font_size = 15
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8pit"]
+atlas = ExtResource("2_kfc2i")
+region = Rect2(114, 224, 29, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnmye"]
+atlas = ExtResource("2_kfc2i")
+region = Rect2(114, 256, 29, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bfmur"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8pit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnmye")
+}],
+"loop": true,
+"name": &"Lilanim",
+"speed": 5.0
+}]
+
+[node name="Credit Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c4f4l")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ava2w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Programming" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "**---------------------------**
+PROGRAMMING
+**---------------------------**
+Kapioga
+Socials: @KAPIOGA
+https://github.com/Kapioga
+
+"
+
+[node name="Game asset" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "**---------------------------**
+GAME ASSETS
+**---------------------------**
+KENNEY - 1BIT PACK
+https://www.kenney.nl
+
+"
+
+[node name="Music Credit" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "**---------------------------**
+MENU MUSIC
+**---------------------------**
+Short 8 bit Background Music - WHITE RECORDS
+https://pixabay.com/users/white_records-32584949/
+
+"
+
+[node name="SFX CREDIT" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "**---------------------------**
+Sound FX 
+**---------------------------**
+Essential Retro Video Game Sound Effects Collection - Juhani Junkala
+https://www.youtube.com/watch?v=dbACpSy9FWY
+
+"
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="Fan Anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(157, 74)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_bfmur")
+animation = &"Lilanim"
+autoplay = "Lilanim"
+frame_progress = 0.237594
+
+[node name="Fan Anim2" type="AnimatedSprite2D" parent="."]
+position = Vector2(841, 370)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_bfmur")
+animation = &"Lilanim"
+autoplay = "Lilanim"
+frame_progress = 0.852386
+
+[node name="CreditTheme" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_vnbuk")
+volume_db = -12.0
