@@ -1,16 +1,18 @@
 extends Node2D
 
+# Onready Files
 @onready var game_theme = $GameTheme
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	game_theme.play()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
 	exit_game()
-	
+
+# Button to exit game
 func exit_game():
 	if Input.is_action_just_pressed("Exit"):
 		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")

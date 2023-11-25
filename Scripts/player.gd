@@ -9,7 +9,7 @@ const player_damage = 5
 const SPEED = 400.0
 const JUMP_VELOCITY = -400.0
 
-# Gravity variables
+# Main Variables
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var gpu_particles_2d = $GPUParticles2D
@@ -30,6 +30,7 @@ func gravity_set(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
+
 #Player Jump 
 func jump_set():
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
@@ -48,6 +49,7 @@ func player_move():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		gpu_particles_2d.emitting = false
 
+
 #Player Sprite directions
 func anim_dir():
 	if velocity.x > 1:
@@ -55,16 +57,17 @@ func anim_dir():
 	if velocity.x < -1:
 		animated_sprite_2d.flip_h = true
 
-#Spike Wall detect and damage
+
+# Spike Wall detect and damage
 func entered_spike_wall(area):
 	player_health = h_bar.value
-	#print("Oof, you touched the wall!")
 	player_health -= player_damage
 	damage_sfx.play()
 	h_bar.value = player_health
 	
+	# Changes to credit screen if low health
 	if player_health == 0:
 		get_tree().change_scene_to_file("res://Scenes/credit_menu.tscn")
-	#print("Players health is: ", str(player_health))
+
 
 
