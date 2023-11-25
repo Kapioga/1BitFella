@@ -153,7 +153,6 @@ shape = SubResource("RectangleShape2D_k6xq1")
 debug_color = Color(0.803922, 0.333333, 0.65098, 0.419608)
 
 [node name="HealthBar" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="HBar" type="ProgressBar" parent="HealthBar"]
 offset_left = 82.0

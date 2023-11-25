@@ -62,6 +62,9 @@ func entered_spike_wall(area):
 	player_health -= player_damage
 	damage_sfx.play()
 	h_bar.value = player_health
+	
+	if player_health == 0:
+		get_tree().change_scene_to_file("res://Scenes/credit_menu.tscn")
 	#print("Players health is: ", str(player_health))
 
 
