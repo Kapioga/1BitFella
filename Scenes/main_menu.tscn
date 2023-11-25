@@ -1,7 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://fua0ed5byfis"]
+[gd_scene load_steps=18 format=3 uid="uid://fua0ed5byfis"]
 
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_mxme1"]
 [ext_resource type="FontFile" uid="uid://cydnd2rfvdub0" path="res://Assets/Minecraft.ttf" id="1_n0hfd"]
 [ext_resource type="Texture2D" uid="uid://biy67wnhyfcsv" path="res://Assets/monochrome_tilemap_packed.png" id="2_xg3tv"]
+[ext_resource type="AudioStream" uid="uid://b5mrykhce5qkq" path="res://Assets/SFX/Menu/sfx_menu_move.wav" id="4_0axqd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a4oer"]
 texture = ExtResource("2_xg3tv")
@@ -492,6 +494,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_mxme1")
 
 [node name="BackgroundTiles" type="TileMap" parent="."]
 position = Vector2(285, 150)
@@ -527,8 +530,12 @@ alignment = 1
 layout_mode = 2
 text = "PLAY"
 
+[node name="ButtonSoundD" type="AudioStreamPlayer2D" parent="MarginContainer/VBoxContainer/Play"]
+stream = ExtResource("4_0axqd")
+
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+disabled = true
 text = "OPTION"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
@@ -582,7 +589,7 @@ position = Vector2(81, 4.99998)
 sprite_frames = SubResource("SpriteFrames_p6pkr")
 animation = &"credit"
 autoplay = "Menu player"
-frame_progress = 0.96706
+frame_progress = 0.897747
 
 [node name="CreditLabelText" type="Label" parent="."]
 layout_mode = 1
@@ -614,3 +621,6 @@ tile_set = SubResource("TileSet_gp4qr")
 cell_quadrant_size = 20
 format = 2
 layer_0/tile_data = PackedInt32Array(262150, 917504, 1, 196614, 917504, 0, 327679, 983040, 1, 262143, 983040, 0, 262141, 983040, 0, 196615, 983040, 0, 262151, 983040, 1, 327677, 983040, 1, 327678, 1114112, 1, 262144, 1179648, 1, 262148, 1179648, 1, 262149, 1048576, 0, 262145, 1048576, 0, 262146, 1048576, 1, 262147, 1114112, 1)
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b3111ednfndj2"]
+[gd_scene load_steps=18 format=3 uid="uid://b3111ednfndj2"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_3se6e"]
 [ext_resource type="PackedScene" uid="uid://gmu2jvgsq3ub" path="res://Scenes/background.tscn" id="1_cx71f"]
@@ -63,6 +63,10 @@ font_color = Color(0.854902, 0.854902, 0.854902, 1)
 shadow_size = 5
 shadow_color = Color(0.752941, 0.752941, 0.752941, 0)
 shadow_offset = Vector2(2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bffa2"]
+font = ExtResource("5_vpi53")
+font_size = 12
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3se6e")
@@ -193,6 +197,14 @@ visible = false
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(535, 262)
 max_distance = 100.0
+
+[node name="ExitLabelMain" type="Label" parent="."]
+offset_left = 424.0
+offset_top = 530.0
+offset_right = 627.0
+offset_bottom = 556.0
+text = "PRESS ESC KEY TO EXIT"
+label_settings = SubResource("LabelSettings_bffa2")
 
 [connection signal="area_entered" from="Wall Spike/Area2D" to="Player" method="entered_spike_wall"]
 [connection signal="area_entered" from="Wall SpikeR/Area2D" to="Player" method="entered_spike_wall"]
