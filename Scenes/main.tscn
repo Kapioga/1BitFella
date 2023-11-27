@@ -153,6 +153,7 @@ shape = SubResource("RectangleShape2D_k6xq1")
 debug_color = Color(0.803922, 0.333333, 0.65098, 0.419608)
 
 [node name="HealthBar" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="HBar" type="ProgressBar" parent="HealthBar"]
 offset_left = 82.0
@@ -164,7 +165,6 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_vpi53")
 theme_override_styles/background = SubResource("StyleBoxFlat_fmktt")
 theme_override_styles/fill = SubResource("StyleBoxFlat_mibc1")
-value = 50.0
 rounded = true
 fill_mode = 1
 show_percentage = false

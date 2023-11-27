@@ -60,14 +60,15 @@ func anim_dir():
 
 # Spike Wall detect and damage
 func entered_spike_wall(area):
-	player_health = h_bar.value
-	player_health -= player_damage
-	damage_sfx.play()
-	h_bar.value = player_health
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+	#player_health = h_bar.value
+	#player_health -= player_damage
+	#damage_sfx.play()
+	#h_bar.value = player_health
 	
 	# Changes to credit screen if low health
-	if player_health == 0:
-		get_tree().change_scene_to_file("res://Scenes/credit_menu.tscn")
+	#if player_health == 0:
+		#get_tree().change_scene_to_file("res://Scenes/credit_menu.tscn")
 
 
 

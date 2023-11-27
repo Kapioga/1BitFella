@@ -14,7 +14,8 @@ func _ready():
 func _process(delta):
 	
 	# Moves tiled parallax assets
-	h_platform.motion_offset.x -= 100 *delta
-	v_platform.motion_offset.x -= 200 *delta
-	v_platform_top.motion_offset.x -= 75 *delta
+	#h_platform.motion_offset.x += 20 *delta
+	#v_platform.motion_offset.x -= 20 *delta
+	#v_platform_top.motion_offset.x -= 5 *delta
+	pass
 
