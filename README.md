@@ -1,5 +1,9 @@
 # 1 BIT FELLA
-1 BIT FELLA is an arcade platformer where you play as a 1bit fella dodging and weaving throuh floating platforms to survive for as long as possible! Can you beat the latest high score?
+1 Bit Fella is an arcade platformer where you play as a 1bit fella on a platformer. This Repo is meant to explore the available platformer based functionalities within the Godot Engine.
+
+# HOW TO DOWNLOAD
+Go to the "Export" folder within the Repository and download the "1Bit Fella Game Executable" containing the executable file and the packet. 
+The packet is needed in order to run the game entirely.
 
 # CONTROLS
 Arrow Keys -> Movement
