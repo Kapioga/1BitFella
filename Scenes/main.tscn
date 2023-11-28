@@ -82,7 +82,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_446ph")
 [node name="Background" parent="." instance=ExtResource("1_cx71f")]
 
 [node name="Wall Spike" parent="." instance=ExtResource("3_wj2xy")]
-position = Vector2(-35, 2)
 metadata/_edit_lock_ = true
 
 [node name="Area2D" parent="Wall Spike" index="2"]
@@ -90,7 +89,6 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="Wall SpikeR" parent="." instance=ExtResource("3_wj2xy")]
-position = Vector2(1045, 540)
 rotation = 3.14159
 metadata/_edit_lock_ = true
 
@@ -101,7 +99,7 @@ collision_mask = 2
 [node name="FloorMod" parent="." instance=ExtResource("2_or350")]
 
 [node name="Player" parent="." instance=ExtResource("3_c7kxt")]
-position = Vector2(444, 222)
+position = Vector2(520, 213)
 
 [node name="Area2D" parent="Player" index="3"]
 collision_layer = 3
