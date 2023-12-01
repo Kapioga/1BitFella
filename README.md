@@ -9,6 +9,8 @@ The packet is needed in order to run the game entirely.
 Arrow Keys -> Movement
 Space -> Jump
 
+# Screenshots
+
 # CREDITS
 Game Assets
 KENNEY - 1BIT PACK
