@@ -15,14 +15,14 @@ The packet is needed in order to run the game entirely.
 ![1BitFella GameScreenshot](https://github.com/Kapioga/1BitFella/assets/77947921/f9a69421-1879-4f00-aadf-b40d1b8d16af)
 
 ## CREDITS
-**###Game Assets**
+**Game Assets**
 KENNEY - 1BIT PACK
 - https://www.kenney.nl
 
-**###Menu Music**
+**Menu Music**
 Short 8 bit Background Music - WHITE RECORDS
 - https://pixabay.com/users/white_records-32584949
 
-**###Sounds FX**
+**Sounds FX**
 Essential Retro Video Game Sound Effects Collection - Juhani Junkala
 - https://www.youtube.com/watch?v=dbACpSy9FWY
