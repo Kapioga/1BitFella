@@ -7,6 +7,7 @@ The packet is needed in order to run the game entirely.
 
 ## CONTROLS
 **Arrow Keys** -> Movement
+
 **Space** -> Jump
 
 ## Screenshots
